@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 const app = express();
 const workoutRoutes = require("./routes/workouts");
 const userRoutes = require("./routes/user");
+const cors = require("cors");
 //middleware
+app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
@@ -29,6 +31,7 @@ app.use("/api/user", userRoutes);
  */
 
 //async function method
+
 const startServer = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
@@ -40,3 +43,5 @@ const startServer = async () => {
   }
 };
 startServer();
+
+module.exports = app;
