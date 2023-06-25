@@ -10,7 +10,7 @@ const WorkoutDetails = ({ workout }) => {
       return;
     }
     const response = await fetch(
-      `http://localhost:4000/api/workouts/` + workout._id,
+      `${process.env.REACT_APP_API_URL}/workouts/` + workout._id,
       {
         method: "DELETE",
         headers: {
